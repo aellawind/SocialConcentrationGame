@@ -1,7 +1,6 @@
 'use strict';
 
-var passport       = require('passport'),
-    bodyParser     = require('body-parser'),
+var bodyParser     = require('body-parser'),
     cookieParser   = require('cookie-parser'),
     middle         = require('./middleware'),
     morgan         = require('morgan'),
@@ -17,7 +16,7 @@ var dbConnection = mysql.createConnection({
 
 dbConnection.connect();
 
-module.exports = exports = function (app, express,routers) {
+module.exports = exports = function (app, express,passport,routers) {
   app.set('port', process.env.PORT || 3000);
   app.set('base url', process.env.URL || 'http://127.0.0.1');
   app.use(cookieParser());
