@@ -11,6 +11,7 @@
     "method-override": "^2.1.2",
     "morgan": "^1.2.0",
     "mysql": "^2.4.1",
-    "passport": "^0.2.0"
+    "passport": "^0.2.0",
+    "path": "^0.4.9"
   }
 }

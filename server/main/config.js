@@ -6,6 +6,7 @@ var bodyParser     = require('body-parser'),
     morgan         = require('morgan'),
     methodOverride = require('method-override'),
     session        = require('express-session'),
+    path           = require('path'),
     mysql          = require('mysql');
 
 var dbConnection = mysql.createConnection({
@@ -13,8 +14,9 @@ var dbConnection = mysql.createConnection({
   password: '',
   database: 'linkedingame'
 });
+console.log(path.join(__dirname, '../../client'));
 
-dbConnection.connect();
+//dbConnection.connect();
 
 module.exports = exports = function (app, express,passport,routers) {
   app.set('port', process.env.PORT || 3000);
@@ -29,5 +31,5 @@ module.exports = exports = function (app, express,passport,routers) {
   app.use(middle.logError);
   app.use(middle.handleError);
   app.use(methodOverride());
-
+  app.use(express.static(path.join(__dirname, '../../client')));
 };
