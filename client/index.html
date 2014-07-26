@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<html lang="en">
+<html lang="en" ng-app="webApp">
   <head>
-    <title>Social Concetnration Game</title>
+    <title>Social Concentration Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Amira Anuar">
+    <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+      api_key: 75p0t7ht3gcjez
+      onLoad: linkedinLoad
+      authorize: true
+    </script>
   </head>
 
-  <body >
+  <body id="main">
   
-
+    <div ui-view></div>
+    
+    <!-- Javascript -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="main.js"></script>
+    <script src="login/login.js"></script>
 
   </body>
 </html>
