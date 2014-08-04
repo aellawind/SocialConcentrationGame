@@ -18,9 +18,9 @@ var onLinkedInLogout = function() {
 // This executes once the user has successfully logged in
 var onLinkedInLogin = function() {
   // Pass the user info to angular
-	angular.element(document.getElementById("gameBody")).scope().$apply(
-		function($scope) {
-			//$scope.getLinkedInData();
-		}
-	);
+	// angular.element(document.getElementById("gameBody")).scope().$apply(
+	// 	function($scope) {
+	// 		//$scope.getLinkedInData();
+	// 	}
+	// );
 };
