@@ -1,3 +1,43 @@
+/* For screen to prevent clicking */
+#screen {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 999;
+}
+
+/* For fading out animation */
+@-moz-keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+@-moz-keyframes fadeOut {
+    from {opacity:1;}
+    to {opacity:0;}
+}
+
+@-webkit-keyframes fadeOut {
+    from {opacity:1;}
+    to {opacity:0;}
+}
+@keyframes fadeOut {
+    from {opacity:1;}
+    to {opacity:0;}
+}
+
+
 /* For flipping animation */
 card {
   float: left;
@@ -15,13 +55,27 @@ card {
   border-radius: 15px;
   position:relative;
   background-color:blue;
+  -webkit-animation: fadeIn 500ms;
+  -moz-animation: fadeIn 500ms;
+  animation: fadeIn 500ms;
   /*font-size: .8em;*/
 }
 
-/*card img {
+/* Class to add when we want card to fade out */
+card.vanish {
+    -webkit-animation-name: fadeOut;
+    -moz-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+card img {
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
   height: 100%;
   width: 100%;
-}*/
+}
 
 card card-front {
   -moz-border-radius: 15px;
@@ -106,20 +160,6 @@ card.flipped card-back {
 }
 
 
-/*******/
-
-/*
-.card {
-  width: 15%;
-  height: 0;
-  padding-bottom: 15%;
-	float:left;
-	margin:5px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-  position:relative;
-}
-*/
 .card.name {
 	background-color:#bfdef9;
 	border: 1px solid #83bef4;	

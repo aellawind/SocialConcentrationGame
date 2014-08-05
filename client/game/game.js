@@ -31,32 +31,42 @@ angular.module('game', [])
   return {
     restrict: 'E',
     scope: false,
-    link: function($scope, $elem, $attrs) {
-      console.log('s',$scope);
-      // behavior for flipping effect.
+    link: function(scope, elem, attrs) {
       var flip = function() {
-        $elem.toggleClass('flipped');
-        var curcard = $scope.playingcard;
-        if ($scope.$parent.cardsFlipped.length === 0) {
-          $scope.$parent.cardsFlipped.push({elem:$elem,card:curcard});
-        } else if ($scope.$parent.cardsFlipped.length === 1) {
-          var firstcard = $scope.$parent.cardsFlipped[0];
+        elem.toggleClass('flipped');
+        var curcard = scope.playingcard;
+        if (scope.$parent.cardsFlipped.length === 0) {
+          elem.unbind('click');
+          scope.$parent.cardsFlipped.push({elem:elem,card:curcard});
+        } else if (scope.$parent.cardsFlipped.length === 1) {
+          var firstcard = scope.$parent.cardsFlipped[0];
+          document.getElementById("screen").style.display = 'block';
           if (curcard.id === firstcard.card.id) {
-            console.log('match');
+            $(elem[0]).bind("animationend webkitAnimationEnd", function() {
+                $(elem).remove();
+                $(firstcard.elem).remove();
+              });
             setTimeout(function() {
-              console.log('delay');
-              firstcard.elem.toggleClass('flipped');
-              $elem.toggleClass('flipped');
-            },2000);
+              elem[0].className = elem[0].className + ' vanish';
+              scope.$parent.cardsFlipped = [];
+              document.getElementById("screen").style.display = 'none';
+            },1500);
           } else {
-            console.log('not match');
-            // flip over again
+            // No match, so we flip the cards back over
+            setTimeout(function() {
+              firstcard.elem.toggleClass('flipped');
+              firstcard.elem.bind('click', flip);
+              elem.toggleClass('flipped');
+              elem.bind('click', flip);
+              scope.$parent.cardsFlipped = [];
+              document.getElementById("screen").style.display = 'none';
+            },2000);
           }
         }
     
       };
-      if ($attrs.clickToggle) {
-        $elem.bind('click', flip);
+      if (attrs.clickToggle) {
+        elem.bind('click', flip);
       }
     }
   };
@@ -77,7 +87,6 @@ angular.module('game', [])
 })
 
 .directive('name', function(){
-  // console.log('data in tile directive', Data);
   return {
     restrict:'E',
     scope: {
