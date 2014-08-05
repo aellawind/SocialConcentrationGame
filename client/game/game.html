@@ -1,6 +1,23 @@
 <div id="game" ng-controller="GameController as ctrl">
+  
+  <!-- Heading -->
+  <div id="heading">
+    <h1 class="title">Social Concentration</h1>
+  </div>
 
-Hello! Game play here. keep the high score and such
+  <!-- Instructions -->
+  <div id="instructions">
+    Match your LinkedIn connections' faces with their names!
+    <button ng-click='ctrl.newGame()' class="restart-button">New game</button>
+  </div>
+
+  <!-- Scores -->
+<!--   <div class="scores-container">
+    <div class="score-container">{{ctrl.game.currentScore}}</div>
+    <div class="best-container">{{ctrl.game.highScore}}</div>
+  </div> -->
+
+  <!-- Game Tiles -->
   <board></board>
 
 </div>

@@ -1,13 +1,11 @@
 <!-- <div class="game-{{ gameModel.gameSize }}"> -->
 <div class="game section group">
-	<div class="col span_1_of_2">
-    <div ng-repeat="playingcard in ctrl.cards" class="card name">
-      <card playingcard="playingcard">hi</card>
-    </div>
-  </div>
-  <div class="col span_1_of_2">
-    <div ng-repeat="playingcard in ctrl.cards" class="card photo">
-      <card playingcard="playingcard"></card>
-    </div>
+  <div ng-repeat="playingcard in ctrl.cards">
+    <card data-click-toggle="true" playingcard="playingcard">
+      <card-front></card-front> 
+      <card-back playingcard="playingcard"></card-back>
+    </card>
   </div>
 </div>
+
+
