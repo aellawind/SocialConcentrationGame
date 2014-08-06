@@ -2,18 +2,19 @@ angular.module('game', [])
 
 .controller('GameController', function($scope) {
   this.cards = [{type: 'photo', photo:'https://www.linkedin.com/mpr/pub/image-sbfAYJF2sIumHI5iYgHb35YszLsSKa-oDTHU87ntzKtFLHBysbfUbeE2zMVF9G-OR-gn/amira-anuar.jpg',id:1},
-                {type: 'name', name:'a',id:1},
+                {type: 'name', name:'Amira Anuar',id:1},
                 {type: 'name', photo:'https://avatars1.githubusercontent.com/u/529?v=1&s=48',id:2},
-                {name: 'b',id:2},
+                {name: 'basdfassssfsaf asdffasdfasfasdfs',id:2},
                 {type: 'photo',photo:'https://avatars1.githubusercontent.com/u/529?v=1&s=48',id:3},
-                {type: 'photo',name:'c',id:3},
+                {type: 'photo',name:'csadfsafasf',id:3},
                 {type: 'photo',photo:'https://avatars1.githubusercontent.com/u/529?v=1&s=48',id:4},
-                {type: 'photo',name:'d',id:4},
-                {type: 'photo',name:'e',id:5},
+                {type: 'photo',name:'dasdfsaf',id:4},
+                {type: 'photo',name:'esadfafs',id:5},
                 {type: 'photo',photo:'https://avatars1.githubusercontent.com/u/529?v=1&s=48',id:5},
                 ];
 
   $scope.cardsFlipped = [];
+  $scope.game = {currentScore:0,highScore:0};
   // get the data and randomize it before i turn it into tiles
   // third id will be the id we want to understand and 
   // we compare that internally inside the controller
@@ -33,6 +34,7 @@ angular.module('game', [])
     scope: false,
     link: function(scope, elem, attrs) {
       var flip = function() {
+        console.log(scope);
         elem.toggleClass('flipped');
         var curcard = scope.playingcard;
         if (scope.$parent.cardsFlipped.length === 0) {
@@ -50,6 +52,9 @@ angular.module('game', [])
               elem[0].className = elem[0].className + ' vanish';
               scope.$parent.cardsFlipped = [];
               document.getElementById("screen").style.display = 'none';
+              console.log('hi',scope.$parent.game.currentScore);
+              scope.$parent.game.currentScore++;
+              scope.$apply();
             },1500);
           } else {
             // No match, so we flip the cards back over
@@ -85,34 +90,3 @@ angular.module('game', [])
   }
 
 })
-
-.directive('name', function(){
-  return {
-    restrict:'E',
-    scope: {
-      name: '@',
-      photo: '@',
-      playingcard: '='
-    },
-    templateUrl: 'game/namecardTemplate.html',
-    replace: true,
-     // link: function(scope, elem, attrs, model) {
-     // // if name, assign target to name section
-     // // if picture, assign target to picture section
-     // // append that child to the target 
-     //  elem.bind('click', function() {
-     //    elem.css('background-color', 'white');
-     //    scope.$apply(function() {
-     //      scope.color = "white";
-     //    });
-     //  });
-     //  elem.bind('mouseover', function() {
-     //    elem.css('cursor', 'pointer');
-     //  });
-    // }// link: function(scope, element, attrs, model){
-    //   var target = document.getElementById(scope.color+'Bucket');
-    //   target.appendChild(element[0]);        
-    // }
-  }
-})
-

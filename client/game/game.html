@@ -1,7 +1,7 @@
 <div id="game" ng-controller="GameController as ctrl">
   
   <!-- Heading -->
-  <div id="heading">
+  <div class="span_1_of_2" id="heading">
     <h1 class="title">Social Concentration</h1>
   </div>
 
@@ -12,10 +12,10 @@
   </div>
 
   <!-- Scores -->
-<!--   <div class="scores-container">
-    <div class="score-container">{{ctrl.game.currentScore}}</div>
-    <div class="best-container">{{ctrl.game.highScore}}</div>
-  </div> -->
+  <div class="scores-container">
+    <div class="score-container">Current Score: {{game.currentScore}}</div>
+    <div class="best-container">Best Score: {{game.highScore}}</div>
+  </div>
 
   <!-- Game Tiles -->
   <board></board>

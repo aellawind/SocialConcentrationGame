@@ -1,2 +1,4 @@
-<img src="{{ playingcard.photo || image.gif }}" class="linkedinphoto" />
-<p class="nameText">{{ playingcard.name || "" }}</p>
+<div class="cardfront">
+  <img src="{{ playingcard.photo || 'assets/image.png' }}"/>
+  <p class="cardtext">{{ playingcard.name || "" }}</p>
+</div>
